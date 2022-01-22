@@ -28,6 +28,13 @@ namespace Assets.hundo1018.Scripts.Stage
         public void OnStageChanged(object sender, TimeEventArgs args)
         {
             _image.sprite = (args.IsNight ? _moon : _sun);
+            if (_sun) ResetToSun();
+        }
+
+        private void ResetToSun()
+        {
+            _image.fillAmount = 1;
+            _image.color = Color.HSVToRGB(0, 0, 1);
         }
     }
 }
