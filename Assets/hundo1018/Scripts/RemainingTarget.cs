@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class RemainingTarget : MonoBehaviour
 {
-    [SerializeField] private Animator textAnimation;
+    [SerializeField] private Animator textAnimator;
     [SerializeField]private Text _text;
     [SerializeField] bool TempPlus;
     //private const string ALREADY = "已屠殺";
@@ -23,7 +23,7 @@ public class RemainingTarget : MonoBehaviour
         _targetAmount = targetAmount;
         if (_currentAmount >= _targetAmount) _currentAmount = _targetAmount;
         _text.text = $"{_currentAmount}/{_targetAmount}";
-        textAnimation.Play("Shake");
+        textAnimator.Play("Shake");
     }
     /// <summary>
     /// 增加數量

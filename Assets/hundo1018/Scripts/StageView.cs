@@ -10,6 +10,7 @@ namespace Assets.hundo1018.Scripts.Stage
         StageModel _stageModel;
         [SerializeField] private Sprite _sun;
         [SerializeField] private Sprite _moon;
+        [SerializeField] private Animator _SunMoonAnimator;
         private Image _image;
         private void Awake()
         {
@@ -29,6 +30,7 @@ namespace Assets.hundo1018.Scripts.Stage
         {
             _image.sprite = (args.IsNight ? _moon : _sun);
             if (_sun) ResetToSun();
+            if (args.IsNight) _SunMoonAnimator.Play("ShowMoon");
         }
 
         private void ResetToSun()
