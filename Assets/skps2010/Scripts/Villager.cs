@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using asef18766.Scripts.Wolf;
 
 namespace skps2010.Scripts
 {
@@ -10,9 +11,13 @@ namespace skps2010.Scripts
         private Quaternion newRotation;
         private bool isTurning = false;
         private double cooldown = 0;
-        public Transform PlayerTransform;
+        private Transform playerTransform;
         public GameObject Bullet;
+        public VillagerController VillagerController;
 
+        public void Start() {
+            playerTransform = WolfManager.GetInstance().PlayerRef.transform;
+        }
 
         Vector3 BulletStartPoint()
         {
@@ -23,6 +28,7 @@ namespace skps2010.Scripts
         {
             if (cooldown > 0)
                 cooldown -= Time.deltaTime;
+            Debug.Log(state);
             // 亂走模式
             if (state == 0)
             {
@@ -48,7 +54,7 @@ namespace skps2010.Scripts
             }
             else // 攻擊模式
             {
-                var direction = PlayerTransform.position - transform.position;
+                var direction = playerTransform.position - transform.position;
                 var angle = Mathf.Atan2(-direction.x, direction.y);
                 var target_rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, target_rotation, speed * 100 * Time.deltaTime);
@@ -62,7 +68,7 @@ namespace skps2010.Scripts
                 }
 
             }
-            RaycastHit2D hit = Physics2D.Raycast(BulletStartPoint(), PlayerTransform.position - transform.position, 50000, 1 << 6);
+            RaycastHit2D hit = Physics2D.Raycast(BulletStartPoint(), playerTransform.position - transform.position, 50000, 1 << 6);
             if (hit.collider != null)
             {
                 state = 1;
