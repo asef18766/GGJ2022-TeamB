@@ -15,7 +15,7 @@ namespace asef18766.Scripts.Wolf
         [SerializeField] private float chargeTime = 3;
         [SerializeField] private float wolfModeDuration = 3;
         private StageView _hud;
-
+        
         public Action<float> UpdateHud = t => { Debug.Log($"update time to {t}"); };
         public Action<object> EndWolfMode = o => { Debug.Log("end of wolf mode event");};
         public Action<object> WolfAttack = o => { Debug.Log("wolf attack callback"); };
@@ -25,6 +25,9 @@ namespace asef18766.Scripts.Wolf
         private bool _wolfMode = false;
         private bool _charging = false;
         private float _wolfModeRemainTime = 0;
+
+        public bool WolfMode => _wolfMode;
+
         private IEnumerator _attack()
         {
             if (!_canAttack) yield break;
@@ -94,7 +97,7 @@ namespace asef18766.Scripts.Wolf
 
         private void Start()
         {
-            _hud = GameObject.FindObjectOfType<StageView>();
+            _hud = FindObjectOfType<StageView>();
             StartWolfMode.Add(o => { Debug.Log("start of wolf mode event"); });
             UpdateHud = f =>
             {
@@ -106,6 +109,7 @@ namespace asef18766.Scripts.Wolf
             });
             EndWolfMode = o =>
             {
+                Debug.LogWarning("end of wolf mode");
                 var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
                 _hud.OnStageChanged(null, args);
             };

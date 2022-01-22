@@ -1,4 +1,5 @@
 ﻿using System;
+using asef18766.Scripts.Wolf;
 using UnityEngine;
 
 namespace asef18766.Scripts
@@ -14,9 +15,12 @@ namespace asef18766.Scripts
         public Action<Vector2> WalkingCallback = vector2 => { Debug.Log("start walking");};
         public Action<Vector2> StopCallback = vector2 => { Debug.Log("stop walking");};
 
+        private AnimationController _animationController;
+        
         private Rigidbody2D _rb = null;
         private void Start()
         {
+            _animationController = GetComponent<AnimationController>();
             _rb = GetComponent<Rigidbody2D>();
             if (_rb == null)
                 throw new Exception("controller can not obtain rb");
@@ -39,6 +43,8 @@ namespace asef18766.Scripts
         private void Update()
         {
             var mvdir = MoveDir();
+            _animationController.UpdateDirection(mvdir);
+            
             if (mvdir == Vector2.zero)
                 StopCallback(Vector2.zero);
             else
