@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace asef18766.Wolf
+namespace asef18766.Scripts.Wolf
 {
     public class Wolf : MonoBehaviour
     {
