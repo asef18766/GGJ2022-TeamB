@@ -10,5 +10,10 @@ namespace skps2010.Scripts
         {
             transform.position += transform.up * speed * Time.deltaTime;
         }
+
+        void OnCollisionEnter2D(Collision2D collision)
+        {
+            Destroy(gameObject);
+        }
     }
 }
