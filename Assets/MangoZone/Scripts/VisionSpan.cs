@@ -177,8 +177,8 @@ namespace MangoZone {
 
                 if (i > 0) {
                     triangles.Add(0);
-                    triangles.Add(prevHitPointIndex);
                     triangles.Add(hitPointIndex);
+                    triangles.Add(prevHitPointIndex);
 
                     // Add cut in rectangle
                     if (casts[i].collider != null && IsCastedToSameSideOfObstacle(casts[i - 1], casts[i]) && cutInObstacleDistance > Mathf.Epsilon) {
@@ -187,12 +187,12 @@ namespace MangoZone {
                         AddWorldPositionToVerticesList(vertices, casts[i].point - casts[i].normal * cutInObstacleDistance);
 
                         triangles.Add(prevHitPointIndex);
-                        triangles.Add(vertices.Count - 2);
                         triangles.Add(vertices.Count - 1);
+                        triangles.Add(vertices.Count - 2);
 
                         triangles.Add(prevHitPointIndex);
-                        triangles.Add(vertices.Count - 1);
                         triangles.Add(hitPointIndex);
+                        triangles.Add(vertices.Count - 1);
                     }
                 }
 
