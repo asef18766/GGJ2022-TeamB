@@ -8,46 +8,46 @@ namespace Assets.hundo1018.Scripts.Stage
     public class StageModel : MonoBehaviour
     {
         /// <summary>
-        /// ®É¶¡§ïÅÜ©e¬£
+        /// æ™‚é–“æ”¹è®Šå§”æ´¾
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="eventArgs"></param>
         public delegate void TimeEventHandler(object sender, TimeEventArgs eventArgs);
         /// <summary>
-        /// ·í®É¶¡§ó·s®ÉÄ²µo
+        /// ç•¶æ™‚é–“æ›´æ–°æ™‚è§¸ç™¼
         /// </summary>
         public event TimeEventHandler OnTimeUpdatedEventHandler;
         /// <summary>
-        /// ·í®É¶¡¨ì®É³QÄ²µo
+        /// ç•¶æ™‚é–“åˆ°æ™‚è¢«è§¸ç™¼
         /// </summary>
         public event TimeEventHandler OnStageChangedEventHandler;
         /// <summary>
-        /// ³Ì¤p±Ş©]®É¶¡(¬í)
+        /// æœ€å°æ™å¤œæ™‚é–“(ç§’)
         /// </summary>
         [SerializeField] private float _duringTimeMin;
         /// <summary>
-        /// ³Ì¤j±Ş©]®É¶¡(¬í)
+        /// æœ€å¤§æ™å¤œæ™‚é–“(ç§’)
         /// </summary>
         [SerializeField] private float _duringTimeMax;
 
         /// <summary>
-        /// ·í«e¶¥¬q³Ñ¾l®É¶¡(¬í)
+        /// ç•¶å‰éšæ®µå‰©é¤˜æ™‚é–“(ç§’)
         /// </summary>
         [SerializeField] private float _currentRemainingTime;
 
         /// <summary>
-        /// ·í«e¶¥¬q³Ñ¾l®É¶¡¥u¬O¬O¤ñ¨Ò
+        /// ç•¶å‰éšæ®µå‰©é¤˜æ™‚é–“åªæ˜¯æ˜¯æ¯”ä¾‹
         /// </summary>
         [SerializeField] private float _getCurrentRemainingRate { get => _currentRemainingTime / _currentMaxTime; }
 
         /// <summary>
-        /// ·í«e¶¥¬q³Ì¤j®É¶¡(¬í)
+        /// ç•¶å‰éšæ®µæœ€å¤§æ™‚é–“(ç§’)
         /// </summary>
         private float _currentMaxTime;
 
         private bool isNight;
         /// <summary>
-        /// ·í«e¬O§_¬°©]¡A«D©]§Y±Ş
+        /// ç•¶å‰æ˜¯å¦ç‚ºå¤œï¼Œéå¤œå³æ™
         /// </summary>
         [SerializeField]
         private bool _isNight
@@ -63,7 +63,7 @@ namespace Assets.hundo1018.Scripts.Stage
 
         [SerializeField] private bool _isContinue = false;
         /// <summary>
-        /// ¦b³Ì¤p»P³Ì¤j®É¶¡¤§¶¡§ä¤@­Ó®É¶¡¥Nªí·í«e¶¥¬q
+        /// åœ¨æœ€å°èˆ‡æœ€å¤§æ™‚é–“ä¹‹é–“æ‰¾ä¸€å€‹æ™‚é–“ä»£è¡¨ç•¶å‰éšæ®µ
         /// </summary>
         float ChooseTime()
         {
@@ -71,7 +71,7 @@ namespace Assets.hundo1018.Scripts.Stage
         }
 
         /// <summary>
-        /// ·í±Ş©]¶¥¬q³Q¯T¤HÅÜ¨­§ïÅÜ
+        /// ç•¶æ™å¤œéšæ®µè¢«ç‹¼äººè®Šèº«æ”¹è®Š
         /// </summary>
         void OnStageChanged()
         {
@@ -80,7 +80,7 @@ namespace Assets.hundo1018.Scripts.Stage
         }
 
         /// <summary>
-        /// ®É¶¡±qÀY¶}©l­pºâ
+        /// æ™‚é–“å¾é ­é–‹å§‹è¨ˆç®—
         /// </summary>
         void TimeRestart()
         {
@@ -90,7 +90,7 @@ namespace Assets.hundo1018.Scripts.Stage
 
 
         /// <summary>
-        /// ¼È°±
+        /// æš«åœ
         /// </summary>
         void TimePause()
         {
@@ -98,7 +98,7 @@ namespace Assets.hundo1018.Scripts.Stage
         }
 
         /// <summary>
-        /// Ä~Äò
+        /// ç¹¼çºŒ
         /// </summary>
         void TimeContinue()
         {
@@ -106,7 +106,7 @@ namespace Assets.hundo1018.Scripts.Stage
         }
 
         /// <summary>
-        /// ´ú¸Õ¥ÎÁTcode
+        /// æ¸¬è©¦ç”¨ç³code
         /// </summary>
         void TimeUpdateSim()
         {
@@ -127,13 +127,13 @@ namespace Assets.hundo1018.Scripts.Stage
         // Update is called once per frame
         void Update()
         {
-            //´ú¸Õ¥Î
+            //æ¸¬è©¦ç”¨
             if (TempWolfTrigger)
             {
                 OnStageChanged();
                 TempWolfTrigger = false;
             }
-            //´`Àô
+            //å¾ªç’°
             if (_isContinue)
             {
                 TimeUpdateSim();

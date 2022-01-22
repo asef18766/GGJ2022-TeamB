@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Assets.hundo1018.Scripts;
+using Assets.hundo1018.Scripts.Stage;
 using UnityEngine;
 
 namespace asef18766.Scripts.Wolf
@@ -12,6 +14,7 @@ namespace asef18766.Scripts.Wolf
         [SerializeField] private KeyCode attackKey = KeyCode.Space;
         [SerializeField] private float chargeTime = 3;
         [SerializeField] private float wolfModeDuration = 3;
+        private StageView _hud;
 
         public Action<float> UpdateHud = t => { Debug.Log($"update time to {t}"); };
         public Action<object> EndWolfMode = o => { Debug.Log("end of wolf mode event");};
@@ -91,7 +94,21 @@ namespace asef18766.Scripts.Wolf
 
         private void Start()
         {
+            _hud = GameObject.FindObjectOfType<StageView>();
             StartWolfMode.Add(o => { Debug.Log("start of wolf mode event"); });
+            UpdateHud = f =>
+            {
+                _hud.OnTimeUpdate(null, new TimeEventArgs(f, f/wolfModeDuration));
+            };
+            StartWolfMode.Add(o => {
+                var args = new TimeEventArgs(wolfModeDuration, wolfModeDuration) {IsNight = true};
+                _hud.OnStageChanged(null, args);
+            });
+            EndWolfMode = o =>
+            {
+                var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
+                _hud.OnStageChanged(null, args);
+            };
         }
 
         private void Update()

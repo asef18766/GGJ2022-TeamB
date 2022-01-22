@@ -19,13 +19,13 @@ namespace Assets.hundo1018.Scripts.Stage
             _image = GetComponent<Image>();
         }
 
-        void OnTimeUpdate(object sender, TimeEventArgs args)
+        public void OnTimeUpdate(object sender, TimeEventArgs args)
         {
             _image.fillAmount = args.RemainingRate;
             _image.color = Color.HSVToRGB(0, 0, args.RemainingRate);
         }
 
-        void OnStageChanged(object sender, TimeEventArgs args)
+        public void OnStageChanged(object sender, TimeEventArgs args)
         {
             _image.sprite = (args.IsNight ? _moon : _sun);
         }
