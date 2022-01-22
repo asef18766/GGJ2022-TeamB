@@ -10,7 +10,10 @@ namespace asef18766.Scripts
         [SerializeField] private KeyCode left = KeyCode.A;
         [SerializeField] private KeyCode right = KeyCode.D;
         [SerializeField] private float speed = 1;
-        
+
+        public Action<Vector2> WalkingCallback = vector2 => { Debug.Log("start walking");};
+        public Action<Vector2> StopCallback = vector2 => { Debug.Log("stop walking");};
+
         private Rigidbody2D _rb = null;
         private void Start()
         {
@@ -21,7 +24,7 @@ namespace asef18766.Scripts
 
         private Vector2 MoveDir()
         {
-            var mvDir = new Vector2();
+            var mvDir = new Vector2(0,0);
             if (Input.GetKey(up))
                 mvDir += Vector2.up;
             if (Input.GetKey(down))
@@ -35,7 +38,14 @@ namespace asef18766.Scripts
 
         private void Update()
         {
-            _rb.AddForce(MoveDir() * speed);
+            var mvdir = MoveDir();
+            if (mvdir == Vector2.zero)
+                StopCallback(Vector2.zero);
+            else
+            {
+                _rb.AddForce(mvdir * speed);
+                WalkingCallback(mvdir);
+            }
         }
     }
 }
