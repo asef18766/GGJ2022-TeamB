@@ -3,22 +3,22 @@ using System.Linq;
 using UnityEngine;
 using asef18766.Scripts.Wolf;
 using System.Collections;
+using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 namespace skps2010.Scripts
 {
     public class VillagerController : MonoBehaviour
     {
-        private readonly Vector2[] _spawnBounds= {
+        private readonly Vector2[] _spawnBounds = {
             new Vector2(-4,4), // left right
             new Vector2(-5,5), // down up
         };
-        private ArrayList villagers = new ArrayList();
+        private List<GameObject> villagers = new List<GameObject>();
         public GameObject Villager;
         private void Start()
         {
             WolfManager.GetInstance().SpawnWolf();
-            SpawnVillager();
             SpawnVillager();
         }
         private Vector2 RespawnLoc()
@@ -29,9 +29,9 @@ namespace skps2010.Scripts
                 var x = Random.Range(_spawnBounds[0].x, _spawnBounds[0].y);
                 var y = Random.Range(_spawnBounds[1].x, _spawnBounds[1].y);
 
-                Debug.DrawRay(new Vector2(x,y), Vector2.one, Color.yellow);
+                Debug.DrawRay(new Vector2(x, y), Vector2.one, Color.yellow);
                 Debug.Log("try search spawn location");
-                
+
                 var objs = Physics2D.RaycastAll(new Vector2(x, y), Vector2.one);
                 var wallExists = objs.Any(obj => obj.collider.CompareTag("Wall"));
                 if (!wallExists)
@@ -51,11 +51,18 @@ namespace skps2010.Scripts
         {
             villagers.Remove(villager);
             Destroy(villager);
+            if (VillagerCount() == 0)
+                EndGame();
         }
 
         public int VillagerCount()
         {
             return villagers.Count;
+        }
+
+        public void EndGame()
+        {
+            Debug.Log("遊戲結束");
         }
     }
 }

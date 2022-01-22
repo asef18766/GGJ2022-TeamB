@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using System;
 using asef18766.Scripts.Wolf;
+using MangoZone;
+using Random = UnityEngine.Random;
 
 namespace skps2010.Scripts
 {
@@ -12,30 +15,33 @@ namespace skps2010.Scripts
         private bool isTurning = false;
         private double cooldown = 0;
         private Transform playerTransform;
+        private const double error = 1;
         public GameObject Bullet;
         public VillagerController VillagerController;
+        public VisionSpan VisionSpan;
 
-        public void Start() {
+        public void Start()
+        {
             playerTransform = WolfManager.GetInstance().PlayerRef.transform;
         }
 
-        Vector3 BulletStartPoint()
+        private Vector3 BulletStartPoint()
         {
             return transform.position + transform.up * 1.5f;
         }
 
-        void Update()
+        public void Update()
         {
             if (cooldown > 0)
                 cooldown -= Time.deltaTime;
-            Debug.Log(state);
+            Debug.Log(isTurning);
             // 亂走模式
             if (state == 0)
             {
                 if (isTurning) // 轉
                 {
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, newRotation, speed * 100 * Time.deltaTime);
-                    if (transform.rotation == newRotation)
+                    if (Math.Abs(Quaternion.Angle(transform.rotation, newRotation)) < error)
                     {
                         isTurning = false;
                         walkTime = Random.Range(1, 3);
@@ -58,7 +64,7 @@ namespace skps2010.Scripts
                 var angle = Mathf.Atan2(-direction.x, direction.y);
                 var target_rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, target_rotation, speed * 100 * Time.deltaTime);
-                if (transform.rotation == target_rotation)
+                if (Math.Abs(Quaternion.Angle(transform.rotation, target_rotation)) < error)
                 {
                     if (cooldown <= 0)
                     {
@@ -68,8 +74,7 @@ namespace skps2010.Scripts
                 }
 
             }
-            RaycastHit2D hit = Physics2D.Raycast(BulletStartPoint(), playerTransform.position - transform.position, 50000, 1 << 6);
-            if (hit.collider != null)
+            if (VisionSpan.IsInSight(playerTransform.position))
             {
                 state = 1;
             }
@@ -77,6 +82,11 @@ namespace skps2010.Scripts
             {
                 state = 0;
             }
+        }
+
+        public void Hurt()
+        {
+            VillagerController.KillVillager(gameObject);
         }
     }
 }
