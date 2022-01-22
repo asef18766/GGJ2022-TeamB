@@ -105,6 +105,9 @@ namespace Assets.hundo1018.Scripts.Stage
             _isContinue = true;
         }
 
+        /// <summary>
+        /// 測試用糞code
+        /// </summary>
         void TimeUpdateSim()
         {
             _currentRemainingTime -= Time.deltaTime;
@@ -119,20 +122,18 @@ namespace Assets.hundo1018.Scripts.Stage
                 OnStageChanged();
             }
         }
-        // Start is called before the first frame update
-        void Start()
-        {
 
-        }
         public bool TempWolfTrigger = false;
         // Update is called once per frame
         void Update()
         {
+            //測試用
             if (TempWolfTrigger)
             {
                 OnStageChanged();
                 TempWolfTrigger = false;
             }
+            //循環
             if (_isContinue)
             {
                 TimeUpdateSim();
