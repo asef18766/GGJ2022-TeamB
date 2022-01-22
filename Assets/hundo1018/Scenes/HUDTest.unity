@@ -342,8 +342,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 209, y: 211}
-  m_SizeDelta: {x: 1000, y: 150}
+  m_AnchoredPosition: {x: 179, y: 214}
+  m_SizeDelta: {x: 1500, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &594256294
 Animator:
@@ -391,13 +391,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 1
     m_MaxSize: 128
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u5DF2\u5C60\u6BBA / \u76EE\u6A19"
+  m_Text: 0/0
 --- !u!222 &594256296
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -455,6 +455,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cad60ec5443be904eabd595a084c7330, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  textAnimator: {fileID: 594256294}
+  _text: {fileID: 594256295}
+  TempPlus: 0
+  _currentAmount: 0
+  _targetAmount: 0
 --- !u!1 &1186711636
 GameObject:
   m_ObjectHideFlags: 0
@@ -663,6 +668,7 @@ GameObject:
   - component: {fileID: 2117246544}
   - component: {fileID: 2117246543}
   - component: {fileID: 2117246542}
+  - component: {fileID: 2117246545}
   m_Layer: 5
   m_Name: SunMoonView
   m_TagString: Untagged
@@ -703,6 +709,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _sun: {fileID: 21300000, guid: 0773e2237ae862f49a489528cc051054, type: 3}
   _moon: {fileID: 21300000, guid: 848bafc3f5ddf8644a70ce17c904e8c2, type: 3}
+  _SunMoonAnimator: {fileID: 2117246545}
 --- !u!114 &2117246543
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -741,3 +748,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2117246540}
   m_CullTransparentMesh: 1
+--- !u!95 &2117246545
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2117246540}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 9756fa5b4cd6d4f4aa86fa958f2fb5ec, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
