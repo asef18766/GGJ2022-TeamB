@@ -16,7 +16,6 @@ namespace skps2010.Scripts
         private double cooldown = 0;
         private const double error = 1;
         public GameObject Bullet;
-        public VillagerController VillagerController;
         public VisionSpan VisionSpan;
         private GameObject GetPlayer()
         {
@@ -85,7 +84,7 @@ namespace skps2010.Scripts
 
         public void Hurt()
         {
-            VillagerController.KillVillager(gameObject);
+            VillagerController.GetInstance().KillVillager(gameObject);
         }
     }
 }

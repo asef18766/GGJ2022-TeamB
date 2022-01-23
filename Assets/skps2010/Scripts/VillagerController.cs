@@ -15,9 +15,11 @@ namespace skps2010.Scripts
             new Vector2(-5,5), // down up
         };
         private List<GameObject> villagers = new List<GameObject>();
+        private static VillagerController instance = null;
         public GameObject Villager;
         private void Start()
         {
+            instance ??= this;
             WolfManager.GetInstance().SpawnWolf();
             SpawnVillager();
         }
@@ -38,7 +40,10 @@ namespace skps2010.Scripts
                     return new Vector2(x, y);
             }
         }
-
+        public static VillagerController GetInstance()
+        {
+            return instance ??= new VillagerController();
+        }
         public void SpawnVillager()
         {
             var loc = RespawnLoc();
