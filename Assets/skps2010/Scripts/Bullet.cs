@@ -5,7 +5,7 @@ namespace skps2010.Scripts
 {
     public class Bullet : MonoBehaviour
     {
-        private float speed = 5;
+        private float speed = 2;
 
         void Update()
         {

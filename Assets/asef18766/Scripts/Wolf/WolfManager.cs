@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -68,7 +69,7 @@ namespace asef18766.Scripts.Wolf
             if (_respawnCount == 0)
             {
                 Debug.LogWarning("game over, player failed");
-                throw new NotImplementedException();    
+                SceneManager.LoadScene("asef18766/Scenes/lose");
             }
             else
             {
