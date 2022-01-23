@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using asef18766.Scripts.Audio;
 using Assets.hundo1018.Scripts;
 using Assets.hundo1018.Scripts.Stage;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace asef18766.Scripts.Wolf
 
             _canAttack = false;
             WolfAttack(null);
+            AudioManager.Instance.PlaySound("attack");
             var position = transform.position;
             var objs = Physics2D.CircleCastAll(new Vector2(position.x, position.y), attackRange, Vector2.zero);
             foreach (var obj in objs)
@@ -106,6 +108,7 @@ namespace asef18766.Scripts.Wolf
             StartWolfMode.Add(o => {
                 var args = new TimeEventArgs(wolfModeDuration, wolfModeDuration) {IsNight = true};
                 _hud.OnStageChanged(null, args);
+                AudioManager.Instance.PlaySound("night_ambiance_10s");
             });
             EndWolfMode = o =>
             {

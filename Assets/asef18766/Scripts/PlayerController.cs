@@ -1,4 +1,5 @@
 ﻿using System;
+using asef18766.Scripts.Audio;
 using asef18766.Scripts.Wolf;
 using UnityEngine;
 
@@ -24,6 +25,10 @@ namespace asef18766.Scripts
             _rb = GetComponent<Rigidbody2D>();
             if (_rb == null)
                 throw new Exception("controller can not obtain rb");
+            WalkingCallback = vector2 =>
+            {
+                AudioManager.Instance.PlaySound("walk");
+            };
         }
 
         private Vector2 MoveDir()
