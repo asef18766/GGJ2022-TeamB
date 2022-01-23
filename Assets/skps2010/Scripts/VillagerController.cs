@@ -58,6 +58,10 @@ namespace skps2010.Scripts
             if (VillagerCount() == 0)
                 EndGame();
         }
+        public void Reset()
+        {
+            villagers.Clear();
+        }
 
         public int VillagerCount()
         {

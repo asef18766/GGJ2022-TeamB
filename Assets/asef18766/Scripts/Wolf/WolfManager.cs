@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
+using skps2010.Scripts;
 
 namespace asef18766.Scripts.Wolf
 {
@@ -70,6 +71,7 @@ namespace asef18766.Scripts.Wolf
             if (_respawnCount == 0)
             {
                 Debug.LogWarning("game over, player failed");
+                VillagerController.GetInstance().Reset();
                 SceneManager.LoadScene("asef18766/Scenes/lose");
             }
             else
