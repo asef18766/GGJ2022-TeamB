@@ -21,46 +21,41 @@ namespace asef18766.Scripts.Wolf
 
         private Wolf _wolf = null;
         private SpriteRenderer _spriteRenderer = null;
+        private static readonly int FaceDir = Animator.StringToHash("face_dir");
+        private static readonly int IsMoving = Animator.StringToHash("is_moving");
+        private static readonly int WolfMode = Animator.StringToHash("wolf_mode");
+
         private void Start()
         {
             _animator = GetComponent<Animator>();
-            _animator.Play(_currentAnimationState);
             _wolf = WolfManager.GetInstance().PlayerRef.GetComponent<Wolf>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
         }
 
         public void UpdateDirection(Vector2 dir)
         {
-            var nState = "";
-            if (dir == Vector2.left)
+            if (dir != Vector2.zero)
             {
-                nState = "walk_side";
-                _spriteRenderer.flipX = false;
+                if (dir == Vector2.left)
+                {
+                    _animator.SetInteger(FaceDir, 2);
+                    _spriteRenderer.flipX = false;
+                }
+                else if (dir == Vector2.right)
+                {
+                    _animator.SetInteger(FaceDir, 2);
+                    _spriteRenderer.flipX = true;
+                }
+                else if (dir.y < 0)
+                    _animator.SetInteger(FaceDir, 0);
+                else
+                    _animator.SetInteger(FaceDir, 1);
+                _animator.SetBool(IsMoving, true);
             }
-            else if (dir == Vector2.right)
-            {
-                nState = "walk_side";
-                _spriteRenderer.flipX = true;
-            }
-            else if (dir.y < 0)
-                nState = "walk_front";
-            else if (dir.y > 0)
-                nState = "walk_back";
             else
-            {
-                var substring = _currentAnimationState.Substring(4, _currentAnimationState.Length - 4);
-                nState = "idle" + substring;
-                Debug.Log(nState);
-            }
+                _animator.SetBool(IsMoving, false);
             
-            if (nState == _currentAnimationState)
-                return;
-            
-            if (_wolf.WolfMode && (nState[nState.Length -1] != '0'))
-                nState += " 0";
-
-            _currentAnimationState = nState;
-            _animator.Play(_currentAnimationState);
+            _animator.SetBool(WolfMode, _wolf.WolfMode);
         }
     }
 }
