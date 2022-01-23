@@ -7,12 +7,11 @@ namespace asef18766.Scripts
 {
     public class GameController : MonoBehaviour
     {
-        [SerializeField] private VillagerController villagerController;
         private void Start()
         {
             WolfManager.GetInstance().SpawnWolf();
             for (var i = 0; i != 5; i++)
-                villagerController.SpawnVillager();
+                VillagerController.GetInstance().SpawnVillager();
         }
     }
 }
