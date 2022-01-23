@@ -116,6 +116,7 @@ namespace asef18766.Scripts.Wolf
                 Debug.LogWarning("end of wolf mode");
                 var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
                 _hud.OnStageChanged(null, args);
+                AudioManager.Instance.StopSound("night_ambiance_10s");
             };
             if (Camera.main is { })
             {
@@ -137,6 +138,7 @@ namespace asef18766.Scripts.Wolf
         {
             var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
             _hud.OnStageChanged(null, args);
+            AudioManager.Instance.StopSound("night_ambiance_10s");
         }
 
         #endregion
