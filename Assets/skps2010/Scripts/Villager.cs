@@ -15,8 +15,13 @@ namespace skps2010.Scripts
         private bool isTurning = false;
         private double cooldown = 0;
         private const double error = 1;
+        private AnimationController _animationController;
         public GameObject Bullet;
         public VisionSpan VisionSpan;
+        private void Start()
+        {
+            _animationController = GetComponent<AnimationController>();
+        }
         private GameObject GetPlayer()
         {
             return WolfManager.GetInstance().PlayerRef;
@@ -40,6 +45,7 @@ namespace skps2010.Scripts
             {
                 state = 0;
             }
+            _animationController.UpdateDirection(isTurning ? Vector2.zero : (Vector2)transform.up);
 
             // 亂走模式
             if (state == 0)
