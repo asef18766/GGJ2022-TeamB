@@ -74,3 +74,4 @@ crashlytics-build.properties
 # rider
 .idea/
 .idea/*
+GGJ/Token.txt
