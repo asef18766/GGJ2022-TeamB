@@ -45,4 +45,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   audioSources:
   - {fileID: 8300000, guid: 81d1b831ae8cfcf499eb9d8144ca12b8, type: 3}
-  - {fileID: 8300000, guid: a466a9bd3ba7ede4c8d3e239a677fc64, type: 3}
+  - {fileID: 8300000, guid: 0f4d03075bd0c994ba67629e16620288, type: 3}
+  - {fileID: 8300000, guid: 74465be4cea32bf43b3c896cd622c669, type: 3}
+  - {fileID: 8300000, guid: 49eda067c4ee00845af42958407e8c1a, type: 3}
+  - {fileID: 8300000, guid: bff95c7319abab64abbd8c6da2783797, type: 3}
+  - {fileID: 8300000, guid: 1f55e478a4a58364a9c73692f6b055e3, type: 3}
+  - {fileID: 8300000, guid: 27050d96a0fb88344bef11f588bf333c, type: 3}

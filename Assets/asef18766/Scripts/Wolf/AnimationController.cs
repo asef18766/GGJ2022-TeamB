@@ -21,12 +21,31 @@ namespace asef18766.Scripts.Wolf
 
         private Wolf _wolf = null;
         private SpriteRenderer _spriteRenderer = null;
+
         private void Start()
         {
             _animator = GetComponent<Animator>();
             _animator.Play(_currentAnimationState);
             _wolf = WolfManager.GetInstance().PlayerRef.GetComponent<Wolf>();
             _spriteRenderer = GetComponent<SpriteRenderer>();
+
+            _wolf.WolfAttack = o =>
+            {
+                if (_currentAnimationState.Contains("side"))
+                    _animator.Play("attack_side");
+                else if (_currentAnimationState.Contains("front"))
+                    _animator.Play("attack_front");
+                else if (_currentAnimationState.Contains("back"))
+                    _animator.Play("attack_back");
+            };
+            _wolf.StartWolfMode.Add(o =>
+            {
+                _animator.Play("transform");
+            });
+            _wolf.EndWolfMode = o =>
+            {
+                _animator.Play("rev_transform");
+            };
         }
 
         public void UpdateDirection(Vector2 dir)
@@ -61,6 +80,11 @@ namespace asef18766.Scripts.Wolf
 
             _currentAnimationState = nState;
             _animator.Play(_currentAnimationState);
+        }
+
+        private void OnDestroy()
+        {
+            _animator.Play("respawn");
         }
     }
 }

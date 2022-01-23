@@ -141,7 +141,7 @@ MonoBehaviour:
   down: 115
   left: 97
   right: 100
-  speed: 1
+  speed: 6
 --- !u!114 &1347797237
 MonoBehaviour:
   m_ObjectHideFlags: 0

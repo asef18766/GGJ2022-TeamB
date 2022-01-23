@@ -107,6 +107,7 @@ namespace skps2010.Scripts
 
         public void Hurt()
         {
+            Debug.LogWarning("killing villager");
             VillagerController.GetInstance().KillVillager(gameObject);
             state = State.Died;
         }

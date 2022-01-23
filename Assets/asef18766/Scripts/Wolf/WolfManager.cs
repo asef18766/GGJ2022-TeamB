@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Object = UnityEngine.Object;
 using Random = UnityEngine.Random;
 
@@ -63,12 +64,13 @@ namespace asef18766.Scripts.Wolf
         public void KillWolf()
         {
             _respawnCount--;
+            if (Camera.main is { }) Camera.main.transform.parent = null;
             Object.Destroy(PlayerRef);
             PlayerRef = null;
             if (_respawnCount == 0)
             {
                 Debug.LogWarning("game over, player failed");
-                throw new NotImplementedException();    
+                SceneManager.LoadScene("asef18766/Scenes/lose");
             }
             else
             {
