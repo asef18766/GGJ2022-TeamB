@@ -113,6 +113,12 @@ namespace asef18766.Scripts.Wolf
                 var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
                 _hud.OnStageChanged(null, args);
             };
+            if (Camera.main is { })
+            {
+                Camera main;
+                (main = Camera.main).transform.SetParent(transform);
+                main.transform.localPosition = new Vector3(0, 0, -1);
+            }
         }
 
         private void Update()
@@ -122,6 +128,7 @@ namespace asef18766.Scripts.Wolf
             else
                 _charging = false;
         }
+        
         #endregion
     }
 }

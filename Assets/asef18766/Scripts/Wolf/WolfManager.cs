@@ -64,6 +64,7 @@ namespace asef18766.Scripts.Wolf
         public void KillWolf()
         {
             _respawnCount--;
+            if (Camera.main is { }) Camera.main.transform.parent = null;
             Object.Destroy(PlayerRef);
             PlayerRef = null;
             if (_respawnCount == 0)
