@@ -14,8 +14,9 @@ namespace skps2010.Scripts
 
         void OnCollisionEnter2D(Collision2D collision)
         {
+            if (collision.collider.CompareTag("Player"))
+                WolfManager.GetInstance().KillWolf();
             Destroy(gameObject);
-            WolfManager.GetInstance().KillWolf();
         }
     }
 }
