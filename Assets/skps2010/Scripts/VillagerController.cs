@@ -53,6 +53,7 @@ namespace skps2010.Scripts
 
         public void KillVillager(GameObject villager)
         {
+            Debug.LogWarning($"remain villager count:{VillagerCount()}");
             villagers.Remove(villager);
             if (VillagerCount() == 0)
                 EndGame();
