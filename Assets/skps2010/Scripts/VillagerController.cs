@@ -20,7 +20,6 @@ namespace skps2010.Scripts
         private void Start()
         {
             instance ??= this;
-            SpawnVillager();
         }
         private Vector2 RespawnLoc()
         {
@@ -54,7 +53,6 @@ namespace skps2010.Scripts
         public void KillVillager(GameObject villager)
         {
             villagers.Remove(villager);
-            Destroy(villager);
             if (VillagerCount() == 0)
                 EndGame();
         }

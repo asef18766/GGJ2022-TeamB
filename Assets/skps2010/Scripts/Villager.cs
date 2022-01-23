@@ -6,17 +6,28 @@ using Random = UnityEngine.Random;
 
 namespace skps2010.Scripts
 {
+    public enum State
+    {
+        Wandering,
+        Attacking,
+        Died,
+    }
     public class Villager : MonoBehaviour
     {
-        private int state = 0;
-        private float speed = 5;
+        private State state = State.Wandering;
+        private float speed = 1;
         private double walkTime;
         private Quaternion newRotation;
         private bool isTurning = false;
         private double cooldown = 0;
         private const double error = 1;
+        private AnimationController _animationController;
         public GameObject Bullet;
         public VisionSpan VisionSpan;
+        private void Start()
+        {
+            _animationController = GetComponent<AnimationController>();
+        }
         private GameObject GetPlayer()
         {
             return WolfManager.GetInstance().PlayerRef;
@@ -32,17 +43,25 @@ namespace skps2010.Scripts
             if (cooldown > 0)
                 cooldown -= Time.deltaTime;
 
-            if (GetPlayer() != null && VisionSpan.IsInSight(GetPlayer().transform.position))
+            if (state != State.Died)
             {
-                state = 1;
+                if (GetPlayer() != null && GetPlayer().GetComponent<Wolf>().WolfMode && VisionSpan.IsInSight(GetPlayer().transform.position))
+                {
+                    state = State.Attacking;
+                }
+                else
+                {
+                    state = State.Wandering;
+                }
+                _animationController.UpdateDirection(isTurning ? Vector2.zero : (Vector2)transform.up);
             }
             else
             {
-                state = 0;
+                _animationController.Die();
             }
 
             // 亂走模式
-            if (state == 0)
+            if (state == State.Wandering)
             {
                 if (isTurning) // 轉
                 {
@@ -64,7 +83,7 @@ namespace skps2010.Scripts
                     }
                 }
             }
-            else // 攻擊模式
+            else if (state == State.Attacking)// 攻擊模式
             {
                 var direction = GetPlayer().transform.position - transform.position;
                 var angle = Mathf.Atan2(-direction.x, direction.y);
@@ -80,11 +99,17 @@ namespace skps2010.Scripts
                 }
 
             }
+            else // 死了
+            {
+
+            }
         }
 
         public void Hurt()
         {
+            Debug.LogWarning("killing villager");
             VillagerController.GetInstance().KillVillager(gameObject);
+            state = State.Died;
         }
     }
 }

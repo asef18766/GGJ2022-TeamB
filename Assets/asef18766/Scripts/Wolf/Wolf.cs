@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using asef18766.Scripts.Audio;
 using Assets.hundo1018.Scripts;
 using Assets.hundo1018.Scripts.Stage;
 using UnityEngine;
@@ -35,6 +36,7 @@ namespace asef18766.Scripts.Wolf
 
             _canAttack = false;
             WolfAttack(null);
+            AudioManager.Instance.PlaySound("attack");
             var position = transform.position;
             var objs = Physics2D.CircleCastAll(new Vector2(position.x, position.y), attackRange, Vector2.zero);
             foreach (var obj in objs)
@@ -102,17 +104,26 @@ namespace asef18766.Scripts.Wolf
             UpdateHud = f =>
             {
                 _hud.OnTimeUpdate(null, new TimeEventArgs(f, f/wolfModeDuration));
+                AudioManager.Instance.PlaySound("night_ambiance_10s");
             };
             StartWolfMode.Add(o => {
                 var args = new TimeEventArgs(wolfModeDuration, wolfModeDuration) {IsNight = true};
                 _hud.OnStageChanged(null, args);
+                AudioManager.Instance.PlaySound("night_began");
             });
             EndWolfMode = o =>
             {
                 Debug.LogWarning("end of wolf mode");
                 var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
                 _hud.OnStageChanged(null, args);
+                AudioManager.Instance.StopSound("night_ambiance_10s");
             };
+            if (Camera.main is { })
+            {
+                Camera main;
+                (main = Camera.main).transform.SetParent(transform);
+                main.transform.localPosition = new Vector3(0, 0, -1);
+            }
         }
 
         private void Update()
@@ -122,6 +133,14 @@ namespace asef18766.Scripts.Wolf
             else
                 _charging = false;
         }
+
+        private void OnDestroy()
+        {
+            var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
+            _hud.OnStageChanged(null, args);
+            AudioManager.Instance.StopSound("night_ambiance_10s");
+        }
+
         #endregion
     }
 }
