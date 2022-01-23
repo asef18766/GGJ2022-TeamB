@@ -37,30 +37,28 @@ namespace skps2010.Scripts
             }
         }
 
-        public void UpdateDirection(Vector2 dir)
+        public void UpdateDirection(Vector2 dir, bool isIdle = false)
         {
             Target.transform.eulerAngles = new Vector3(0, 0, 0);
             var nState = "";
 
-            if (dir.x == 0 && dir.y == 0)
+            var angle = Vector2.Angle(Vector2.up, dir);
+            if (angle >= 45 && angle < 135)
             {
-                var substring = _currentAnimationState.Substring(4, _currentAnimationState.Length - 4);
-                nState = "idle" + substring;
+                nState = "walk_side";
+                _spriteRenderer.flipX = dir.x > 0;
+            }
+            else if (angle >= 135 && angle <= 180)
+            {
+                nState = "walk_front";
             }
             else
+                nState = "walk_back";
+
+            if (isIdle)
             {
-                var angle = Vector2.Angle(Vector2.up, dir);
-                if (angle >= 45 && angle < 135)
-                {
-                    nState = "walk_side";
-                    _spriteRenderer.flipX = dir.x > 0;
-                }
-                else if (angle >= 135 && angle <= 180)
-                {
-                    nState = "walk_front";
-                }
-                else
-                    nState = "walk_back";
+                var substring = nState.Substring(4, nState.Length - 4);
+                nState = "idle" + substring;
             }
 
             if (nState == _currentAnimationState)

@@ -11,7 +11,7 @@ namespace asef18766.Scripts
         private void Start()
         {
             WolfManager.GetInstance().SpawnWolf();
-            for (var i = 0; i != 2; i++)
+            for (var i = 0; i != 5; i++)
                 villagerController.SpawnVillager();
         }
     }
