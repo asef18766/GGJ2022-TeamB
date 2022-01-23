@@ -53,7 +53,7 @@ namespace skps2010.Scripts
                 {
                     state = State.Wandering;
                 }
-                _animationController.UpdateDirection(isTurning ? Vector2.zero : (Vector2)transform.up);
+                _animationController.UpdateDirection((Vector2)transform.up, !(state == State.Wandering && !isTurning));
             }
             else
             {
