@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System;
 using asef18766.Scripts.Wolf;
+using asef18766.Scripts.Audio;
 using MangoZone;
 using Random = UnityEngine.Random;
 
@@ -94,6 +95,7 @@ namespace skps2010.Scripts
                     if (cooldown <= 0)
                     {
                         Instantiate(Bullet, BulletStartPoint(), transform.rotation);
+                        AudioManager.Instance.PlaySound("gun");
                         cooldown = 3;
                     }
                 }
