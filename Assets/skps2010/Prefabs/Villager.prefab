@@ -146,8 +146,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 427585444390331385}
     m_Modifications:
     - target: {fileID: 8410441549638280660, guid: 26f8bbc8b9f6b4fee8f608deaa540886, type: 3}
+      propertyPath: spanProps.fov
+      value: 60
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410441549638280660, guid: 26f8bbc8b9f6b4fee8f608deaa540886, type: 3}
       propertyPath: spanProps.distance
-      value: 5000
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 8410441549638280660, guid: 26f8bbc8b9f6b4fee8f608deaa540886, type: 3}
+      propertyPath: visionLayerMask.m_Bits
+      value: 64
       objectReference: {fileID: 0}
     - target: {fileID: 8410441549638280662, guid: 26f8bbc8b9f6b4fee8f608deaa540886, type: 3}
       propertyPath: m_RootOrder

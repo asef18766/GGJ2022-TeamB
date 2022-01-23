@@ -14,15 +14,13 @@ namespace skps2010.Scripts
         private Quaternion newRotation;
         private bool isTurning = false;
         private double cooldown = 0;
-        private Transform playerTransform;
         private const double error = 1;
         public GameObject Bullet;
         public VillagerController VillagerController;
         public VisionSpan VisionSpan;
-
-        public void Start()
+        private GameObject GetPlayer()
         {
-            playerTransform = WolfManager.GetInstance().PlayerRef.transform;
+            return WolfManager.GetInstance().PlayerRef;
         }
 
         private Vector3 BulletStartPoint()
@@ -34,7 +32,16 @@ namespace skps2010.Scripts
         {
             if (cooldown > 0)
                 cooldown -= Time.deltaTime;
-            Debug.Log(isTurning);
+
+            if (GetPlayer() != null && VisionSpan.IsInSight(GetPlayer().transform.position))
+            {
+                state = 1;
+            }
+            else
+            {
+                state = 0;
+            }
+
             // 亂走模式
             if (state == 0)
             {
@@ -60,7 +67,7 @@ namespace skps2010.Scripts
             }
             else // 攻擊模式
             {
-                var direction = playerTransform.position - transform.position;
+                var direction = GetPlayer().transform.position - transform.position;
                 var angle = Mathf.Atan2(-direction.x, direction.y);
                 var target_rotation = Quaternion.Euler(0f, 0f, angle * Mathf.Rad2Deg);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, target_rotation, speed * 100 * Time.deltaTime);
@@ -73,14 +80,6 @@ namespace skps2010.Scripts
                     }
                 }
 
-            }
-            if (VisionSpan.IsInSight(playerTransform.position))
-            {
-                state = 1;
-            }
-            else
-            {
-                state = 0;
             }
         }
 

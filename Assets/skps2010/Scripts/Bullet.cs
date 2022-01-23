@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using asef18766.Scripts.Wolf;
 
 namespace skps2010.Scripts
 {
@@ -14,6 +15,7 @@ namespace skps2010.Scripts
         void OnCollisionEnter2D(Collision2D collision)
         {
             Destroy(gameObject);
+            WolfManager.GetInstance().KillWolf();
         }
     }
 }

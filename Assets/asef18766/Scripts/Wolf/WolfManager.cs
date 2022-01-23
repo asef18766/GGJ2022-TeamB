@@ -63,13 +63,17 @@ namespace asef18766.Scripts.Wolf
         public void KillWolf()
         {
             _respawnCount--;
-            Object.Destroy(_wolf);
+            Object.Destroy(PlayerRef);
+            PlayerRef = null;
             if (_respawnCount == 0)
             {
                 Debug.LogWarning("game over, player failed");
                 throw new NotImplementedException();    
             }
-            SpawnWolf();
+            else
+            {
+                SpawnWolf();
+            }
         }
     }
 }
