@@ -1,37 +1,37 @@
 fileFormatVersion: 2
-guid: 0ec7df6b89ba1c34587042153987ea45
+guid: d14806b6bb662a540b7c97254c89f2b9
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8207188638053523598
-    second: respawn_0
+      213: 3669027781482239702
+    second: rev_transform_0
   - first:
-      213: -1559097149305639452
-    second: respawn_1
+      213: -756298441909590126
+    second: rev_transform_1
   - first:
-      213: 5491972726102772162
-    second: respawn_2
+      213: 4223202170951106775
+    second: rev_transform_2
   - first:
-      213: 3915951512338564237
-    second: respawn_3
+      213: -7924416440157861124
+    second: rev_transform_3
   - first:
-      213: -293814764959603658
-    second: respawn_4
+      213: -3816642331477674199
+    second: rev_transform_4
   - first:
-      213: 5589356796805694501
-    second: respawn_5
+      213: -3561901787248243464
+    second: rev_transform_5
   - first:
-      213: -311638048009782242
-    second: respawn_6
+      213: 5805562315013481796
+    second: rev_transform_6
   - first:
-      213: 1946699229542385625
-    second: respawn_7
+      213: -960971722879209576
+    second: rev_transform_7
   - first:
-      213: 4143326383023897421
-    second: respawn_8
+      213: -4022420736153081760
+    second: rev_transform_8
   - first:
-      213: 4764444960356192646
-    second: respawn_9
+      213: -3896122902982128432
+    second: rev_transform_9
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -121,7 +121,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: respawn_0
+      name: rev_transform_0
       rect:
         serializedVersion: 2
         x: 0
@@ -135,14 +135,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 27f9230da653a1e80800000000000000
-      internalID: -8207188638053523598
+      spriteID: 6d6d942f3510be230800000000000000
+      internalID: 3669027781482239702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_1
+      name: rev_transform_1
       rect:
         serializedVersion: 2
         x: 128
@@ -156,14 +156,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ed20553769fc5ae0800000000000000
-      internalID: -1559097149305639452
+      spriteID: 2972cc9f2961185f0800000000000000
+      internalID: -756298441909590126
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_2
+      name: rev_transform_2
       rect:
         serializedVersion: 2
         x: 256
@@ -177,14 +177,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2c94d7fb818673c40800000000000000
-      internalID: 5491972726102772162
+      spriteID: 7d0033ebff3db9a30800000000000000
+      internalID: 4223202170951106775
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_3
+      name: rev_transform_3
       rect:
         serializedVersion: 2
         x: 384
@@ -198,14 +198,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d8408922721485630800000000000000
-      internalID: 3915951512338564237
+      spriteID: cfa0028ab31d60290800000000000000
+      internalID: -7924416440157861124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_4
+      name: rev_transform_4
       rect:
         serializedVersion: 2
         x: 512
@@ -219,14 +219,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 63461d827092cebf0800000000000000
-      internalID: -293814764959603658
+      spriteID: 927fd8d5500980bc0800000000000000
+      internalID: -3816642331477674199
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_5
+      name: rev_transform_5
       rect:
         serializedVersion: 2
         x: 0
@@ -240,14 +240,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 524c48c9462619d40800000000000000
-      internalID: 5589356796805694501
+      spriteID: 8fc4d3e3235919ec0800000000000000
+      internalID: -3561901787248243464
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_6
+      name: rev_transform_6
       rect:
         serializedVersion: 2
         x: 128
@@ -261,14 +261,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1c71e1b8d6dcabf0800000000000000
-      internalID: -311638048009782242
+      spriteID: 445e5c39a20819050800000000000000
+      internalID: 5805562315013481796
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_7
+      name: rev_transform_7
       rect:
         serializedVersion: 2
         x: 256
@@ -282,14 +282,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9d7866d92a0140b10800000000000000
-      internalID: 1946699229542385625
+      spriteID: 89fe69a3f41f9a2f0800000000000000
+      internalID: -960971722879209576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_8
+      name: rev_transform_8
       rect:
         serializedVersion: 2
         x: 384
@@ -303,14 +303,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4bb4a0a46d008930800000000000000
-      internalID: 4143326383023897421
+      spriteID: 0682e64f6ad7d28c0800000000000000
+      internalID: -4022420736153081760
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: respawn_9
+      name: rev_transform_9
       rect:
         serializedVersion: 2
         x: 512
@@ -324,8 +324,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6815ee5c275be1240800000000000000
-      internalID: 4764444960356192646
+      spriteID: 0dc8c7ebcd03ee9c0800000000000000
+      internalID: -3896122902982128432
       vertices: []
       indices: 
       edges: []
