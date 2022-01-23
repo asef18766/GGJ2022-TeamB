@@ -20,7 +20,6 @@ namespace skps2010.Scripts
         private void Start()
         {
             instance ??= this;
-            WolfManager.GetInstance().SpawnWolf();
             SpawnVillager();
         }
         private Vector2 RespawnLoc()
