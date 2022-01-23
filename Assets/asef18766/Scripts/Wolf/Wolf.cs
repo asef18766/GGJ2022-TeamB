@@ -104,11 +104,12 @@ namespace asef18766.Scripts.Wolf
             UpdateHud = f =>
             {
                 _hud.OnTimeUpdate(null, new TimeEventArgs(f, f/wolfModeDuration));
+                AudioManager.Instance.PlaySound("night_ambiance_10s");
             };
             StartWolfMode.Add(o => {
                 var args = new TimeEventArgs(wolfModeDuration, wolfModeDuration) {IsNight = true};
                 _hud.OnStageChanged(null, args);
-                AudioManager.Instance.PlaySound("night_ambiance_10s");
+                AudioManager.Instance.PlaySound("night_began");
             });
             EndWolfMode = o =>
             {
@@ -131,7 +132,13 @@ namespace asef18766.Scripts.Wolf
             else
                 _charging = false;
         }
-        
+
+        private void OnDestroy()
+        {
+            var args = new TimeEventArgs(0, wolfModeDuration) {IsNight = false};
+            _hud.OnStageChanged(null, args);
+        }
+
         #endregion
     }
 }

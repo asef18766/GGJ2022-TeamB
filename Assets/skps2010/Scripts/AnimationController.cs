@@ -27,6 +27,15 @@ namespace skps2010.Scripts
             _animator.Play(_currentAnimationState);
             _spriteRenderer = Target.GetComponent<SpriteRenderer>();
         }
+        public void Die()
+        {
+            Target.transform.eulerAngles = new Vector3(0, 0, 0);
+            if (_currentAnimationState != "villager_die")
+            {
+                _currentAnimationState = "villager_die";
+                _animator.Play(_currentAnimationState);
+            }
+        }
 
         public void UpdateDirection(Vector2 dir)
         {
