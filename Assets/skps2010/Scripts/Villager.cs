@@ -9,7 +9,7 @@ namespace skps2010.Scripts
     public class Villager : MonoBehaviour
     {
         private int state = 0;
-        private float speed = 5;
+        private float speed = 1;
         private double walkTime;
         private Quaternion newRotation;
         private bool isTurning = false;
