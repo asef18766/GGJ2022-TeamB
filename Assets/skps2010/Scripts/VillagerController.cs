@@ -4,6 +4,7 @@ using UnityEngine;
 using asef18766.Scripts.Wolf;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 namespace skps2010.Scripts
@@ -65,6 +66,7 @@ namespace skps2010.Scripts
         public void EndGame()
         {
             Debug.Log("遊戲結束");
+            SceneManager.LoadScene(3);
         }
     }
 }
